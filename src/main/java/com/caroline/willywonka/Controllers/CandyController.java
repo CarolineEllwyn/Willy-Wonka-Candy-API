@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @RestController
 public class CandyController {
@@ -51,19 +52,26 @@ public class CandyController {
         return "Candy with id " + id + " was deleted";
     }
 
-/*    //Get the total amount of candy records based on type
-    @RequestMapping(value = "/api/v1/candies/{type}", method = RequestMethod.GET)
-    public ArrayList<Candy> getTotalAmountBasedOnType (@PathVariable String type){
+    //Get the total amount of candy records based on type
+    @RequestMapping(value = "/api/v1/candies/totalAmount", method = RequestMethod.GET)
+    public HashMap<String, Integer> getTotalAmountBasedOnType (){
         var allCandies = candyRepository.findAll();
-        var sortedByType = new ArrayList<Candy>();
+        var totalAmount = new HashMap<String, Integer>();
 
-        for(var candy : allCandies){
-            if (candy.getType().equals(type)){
-                sortedByType.add(candy);
+        for (var t: allCandies) {
+            if (totalAmount.containsKey(t)){
+                totalAmount.put(t.getType(), totalAmount.get(t)+1);
             }
+            else totalAmount.put(t.getType(), 1);
+
         }
 
-        return sortedByType;
-    }*/
+        return totalAmount;
+    }
 }
+
+
+
+
+
 

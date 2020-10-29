@@ -53,21 +53,21 @@ public class CandyController {
     }
 
     //Get the total amount of candy records based on type
-    @RequestMapping(value = "/api/v1/candies/totalAmount", method = RequestMethod.GET)
+/*    @RequestMapping(value = "/api/v1/candies/totalAmount", method = RequestMethod.GET)
     public HashMap<String, Integer> getTotalAmountBasedOnType (){
         var allCandies = candyRepository.findAll();
         var totalAmount = new HashMap<String, Integer>();
 
         for (var t: allCandies) {
             if (totalAmount.containsKey(t)){
-                totalAmount.put(t.getType(), totalAmount.get(t)+1);
+                totalAmount.put( t.getWeightPerUnit(), totalAmount.get(t)+1);
             }
             else totalAmount.put(t.getType(), 1);
 
         }
 
         return totalAmount;
-    }
+    }*/
 }
 
 

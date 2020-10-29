@@ -1,6 +1,10 @@
 package com.caroline.willywonka.Models;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+
 import javax.persistence.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Candy {
@@ -15,6 +19,21 @@ public class Candy {
     private double weightPerUnit;
     @Column
     private double costPerUnit;
+
+    @ManyToMany(mappedBy = "candies")
+    public List<Factory> factories;
+
+    @JsonGetter("factories")
+    public List<String> factoriesGetter() {
+        if (factories != null) {
+            return factories.stream()
+                    .map(factory -> {
+                        return "/api/v1/factories/" + factory.getId();
+                    }).collect(Collectors.toList());
+        }
+        return null;
+    }
+
 
     public int getId() {
         return id;

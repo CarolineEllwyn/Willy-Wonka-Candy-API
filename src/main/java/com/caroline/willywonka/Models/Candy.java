@@ -2,8 +2,6 @@ package com.caroline.willywonka.Models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.sun.istack.NotNull;
-import org.aspectj.lang.annotation.RequiredTypes;
-
 import javax.persistence.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,6 +21,7 @@ public class Candy {
     @Column
     private double costPerUnit;
 
+    //Makes many To Many relationship in database
     @ManyToMany(mappedBy = "candies")
     public List<Factory> factories;
 
@@ -36,7 +35,6 @@ public class Candy {
         }
         return null;
     }
-
 
     public int getId() {
         return id;

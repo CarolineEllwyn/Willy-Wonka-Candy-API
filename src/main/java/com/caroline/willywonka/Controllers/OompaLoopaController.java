@@ -35,8 +35,6 @@ public class OompaLoopaController {
     }
 
     //Update existing Oompa Loompa
-    //DO NOT WORK
-
     @PutMapping("/{id}")
     public ResponseEntity<OompaLoompa> updateOompaLoompa(@RequestBody OompaLoompa oompaLoompa ) {
         var oompaLoompaToUpdate = oompaLoompaRepository.findById(oompaLoompa.getId()).get();

@@ -26,7 +26,6 @@ public class FactoryController {
     }
 
     //Create a new factory
-    //A errormessage pops up but the item is added in the database anyway
     @PostMapping
     public ResponseEntity<Factory> addFactory(@RequestBody Factory factory) {
         Factory add = factoryRepository.save(factory);

@@ -54,7 +54,8 @@ public class CandyController {
         return "Candy with id " + id + " was deleted";
     }
 
-    //Get the total amount of candy records based on type
+    //Get the total amount of candy records based on type.
+    //This method is under construction
 /*
     @RequestMapping(value = "/api/v1/candies/totalAmount", method = RequestMethod.GET)
     public HashMap<String, Integer> getTotalAmountBasedOnType (){

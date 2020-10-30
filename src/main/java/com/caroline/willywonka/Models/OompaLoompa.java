@@ -19,6 +19,7 @@ public class OompaLoompa {
     @Column
     private String address;
 
+    //Creates one to one relationship in database
     @JsonIgnore
     @OneToOne(mappedBy = "oompaLoompa")
     private Factory factory;

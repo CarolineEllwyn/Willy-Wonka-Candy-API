@@ -34,7 +34,7 @@ public class Factory {
     public List<Candy> candies;
 
 
-    @JsonGetter("candy")
+    @JsonGetter("candies")
     public List<String> candies() {
         return candies.stream()
                 .map(candy -> {

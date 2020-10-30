@@ -1,6 +1,7 @@
 package com.caroline.willywonka.Models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,13 +14,14 @@ public class Factory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
+    @NotNull
     private String name;
     @Column
     private String size;
 
     //One to one relationship in database
     @OneToOne
-    @JoinColumn(name = "oompaloompa_id")
+    @JoinColumn(name = "oompaloompa_id", referencedColumnName = "id")
     private OompaLoompa oompaLoompa;
 
     //Many to many relationship in database
@@ -32,11 +34,11 @@ public class Factory {
     public List<Candy> candies;
 
 
-    @JsonGetter("candies")
+    @JsonGetter("candy")
     public List<String> candies() {
         return candies.stream()
                 .map(candy -> {
-                    return "/api/v1/candies/" + candy.getId();
+                    return "/api/v1/candy/" + candy.getId();
                 }).collect(Collectors.toList());
     }
 

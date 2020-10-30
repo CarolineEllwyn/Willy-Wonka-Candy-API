@@ -1,6 +1,8 @@
 package com.caroline.willywonka.Models;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.sun.istack.NotNull;
+import org.aspectj.lang.annotation.RequiredTypes;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,6 +14,7 @@ public class Candy {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column
+    @NotNull
     private String name;
     @Column
     private String type;
